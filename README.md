@@ -32,3 +32,30 @@ This example assumes the existence of a container named `reposado` from [mscottb
 ```bash
 docker run --name margarita --volumes-from reposado -d -p 8089:8089 -v /path/to/reposado/preferences.plist:/margarita/preferences.plist mscottblake/margarita
 ```
+
+## Example #5 - Add Basic Authentication
+
+Authentication can be added by overriding `/margarita/auth.conf` with the `-v` flag. Contents of `auth.conf`:
+
+```conf
+<Location />
+  AuthType Basic
+  AuthName "Authentication Required"
+  AuthUserFile "/margarita/.htpasswd"
+  Require valid-user
+</Location>
+```
+
+```bash
+docker run --name margarita -d -p 8089:8089 -v /path/to/auth.conf:/margarita/auth.conf -v /path/to/valid-users:/margarita/.htpasswd mscottblake/margarita
+```
+
+Alternatively, the `.htpasswd` file could be created once the container has been created.
+
+```bash
+docker run --name margarita -d -p 8089:8089 -v /path/to/auth.conf:/margarita/auth.conf mscottblake/margarita
+
+docker exec -it margarita htpasswd -c /margarita/.htpasswd USERNAME_1
+
+docker exec -it margarita htpasswd /margarita/.htpasswd USERNAME_2
+```
