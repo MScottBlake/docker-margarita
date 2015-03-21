@@ -59,3 +59,5 @@ docker exec -it margarita htpasswd -c /margarita/.htpasswd USERNAME_1
 
 docker exec -it margarita htpasswd /margarita/.htpasswd USERNAME_2
 ```
+
+More examples of authentication blocks can be found in [GitHub](https://github.com/MScottBlake/docker-margarita/blob/master/auth.conf)
