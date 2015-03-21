@@ -5,7 +5,7 @@ MAINTAINER Scott Blake "Scott.Blake@mail.wvu.edu"
 EXPOSE 8089
 
 RUN apt-get update \
-  && apt-get install -y apache2 curl libapache2-mod-wsgi \
+  && apt-get install -y apache2 apache2-utils curl libapache2-mod-wsgi \
   && pip install flask \
   && mkdir -p /margarita /var/lock/apache2 /var/run/apache2 \
   && curl -ksSL https://github.com/jessepeterson/margarita/tarball/master | tar zx \
