@@ -20,6 +20,7 @@ RUN apt-get update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+COPY authentication.conf /margarita/
 COPY margarita.conf /etc/apache2/sites-enabled/
 COPY margarita.wsgi /margarita/
 COPY preferences.plist /margarita/
