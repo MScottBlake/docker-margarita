@@ -37,7 +37,7 @@ docker run --name margarita --volumes-from reposado -d -p 8089:8089 -v /path/to/
 
 Authentication can be added by overriding `/margarita/auth.conf` with the `-v` flag. Contents of `auth.conf`:
 
-```conf
+```apache
 <Location />
   AuthType Basic
   AuthName "Authentication Required"
