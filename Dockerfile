@@ -19,17 +19,9 @@ RUN apt-get update \
   && apt-get -y remove --purge curl \
   && apt-get -y autoremove --purge \
   && apt-get clean \
-  && a2enmod auth_digest \
-  && a2enmod authn_anon \
-  && a2enmod authn_dbd \
-  && a2enmod authn_dbm \
-  && a2enmod authn_socache \
-  && a2enmod authnz_fcgi \
-  && a2enmod authnz_ldap \
-  && a2enmod authz_dbd \
-  && a2enmod authz_dbm \
-  && a2enmod authz_groupfile \
-  && a2enmod authz_owner \
+  && a2enmod auth_digest authn_anon authn_dbd authn_dbm authn_socache \
+  && a2enmod authnz_fcgi authnz_ldap authz_dbd authz_dbm authz_groupfile \
+  && a2enmod authz_owner ssl \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY auth.conf /margarita/

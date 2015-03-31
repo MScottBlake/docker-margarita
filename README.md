@@ -37,7 +37,7 @@ docker run --name margarita --volumes-from reposado -d -p 8089:8089 -v /path/to/
 
 Authentication can be added by overriding `/margarita/auth.conf` with the `-v` flag. Contents of `auth.conf`:
 
-```apache
+```conf
 <Location />
   AuthType Basic
   AuthName "Authentication Required"
@@ -61,3 +61,19 @@ docker exec -it margarita htpasswd /margarita/.htpasswd USERNAME_2
 ```
 
 More examples of authentication blocks can be found in [GitHub](https://github.com/MScottBlake/docker-margarita/blob/master/auth.conf)
+
+## Example #6 - Enabling SSL
+
+SSL can be added by overriding `/margarita/auth.conf` with the `-v` flag. Contents of `auth.conf`:
+
+```conf
+SSLEngine on
+SSLCertificateKeyFile /ssl/server.key
+SSLCertificateFile /ssl/yourDomainName.crt
+```
+
+Make sure to include the certificate files.
+
+```bash
+docker run --name margarita -d -p 443:8089 -v /path/to/auth.conf:/margarita/auth.conf -v /path/to/server.key:/ssl/server.key -v /path/to/ssl/yourDomainName.crt:/ssl/yourDomainName.crt mscottblake/margarita
+```
