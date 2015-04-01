@@ -35,7 +35,7 @@ docker run --name margarita --volumes-from reposado -d -p 8089:8089 -v /path/to/
 
 ## Example #5 - Add Basic Authentication
 
-Authentication can be added by overriding `/margarita/auth.conf` with the `-v` flag. Contents of `auth.conf`:
+Authentication can be added by overriding `/extras.conf` with the `-v` flag. Contents of `extras.conf`:
 
 ```conf
 <Location />
@@ -47,24 +47,24 @@ Authentication can be added by overriding `/margarita/auth.conf` with the `-v` f
 ```
 
 ```bash
-docker run --name margarita -d -p 8089:8089 -v /path/to/auth.conf:/margarita/auth.conf -v /path/to/valid-users:/margarita/.htpasswd mscottblake/margarita
+docker run --name margarita -d -p 8089:8089 -v /path/to/extras.conf:/extras.conf -v /path/to/valid-users:/margarita/.htpasswd mscottblake/margarita
 ```
 
 Alternatively, the `.htpasswd` file could be created once the container has been created.
 
 ```bash
-docker run --name margarita -d -p 8089:8089 -v /path/to/auth.conf:/margarita/auth.conf mscottblake/margarita
+docker run --name margarita -d -p 8089:8089 -v /path/to/extras.conf:/extras.conf mscottblake/margarita
 
 docker exec -it margarita htpasswd -c /margarita/.htpasswd USERNAME_1
 
 docker exec -it margarita htpasswd /margarita/.htpasswd USERNAME_2
 ```
 
-More examples of authentication blocks can be found in [GitHub](https://github.com/MScottBlake/docker-margarita/blob/master/auth.conf)
+More examples of authentication blocks can be found in [GitHub](https://github.com/MScottBlake/docker-margarita/blob/master/extras.conf)
 
 ## Example #6 - Enabling SSL
 
-SSL can be added by overriding `/margarita/auth.conf` with the `-v` flag. Contents of `auth.conf`:
+SSL can be added by overriding `/extras.conf` with the `-v` flag. Contents of `extras.conf`:
 
 ```conf
 SSLEngine on
@@ -75,5 +75,5 @@ SSLCertificateFile /ssl/yourDomainName.crt
 Make sure to include the certificate files.
 
 ```bash
-docker run --name margarita -d -p 443:8089 -v /path/to/auth.conf:/margarita/auth.conf -v /path/to/server.key:/ssl/server.key -v /path/to/ssl/yourDomainName.crt:/ssl/yourDomainName.crt mscottblake/margarita
+docker run --name margarita -d -p 443:8089 -v /path/to/extras.conf:/extras.conf -v /path/to/server.key:/ssl/server.key -v /path/to/ssl/yourDomainName.crt:/ssl/yourDomainName.crt mscottblake/margarita
 ```
