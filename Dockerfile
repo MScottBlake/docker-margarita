@@ -24,12 +24,12 @@ RUN apt-get update \
   && a2enmod authz_owner ssl \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY auth.conf /margarita/
+COPY extras.conf /
 COPY margarita.conf /etc/apache2/sites-enabled/
-COPY margarita.wsgi /margarita/
+COPY margarita.wsgi /
 COPY preferences.plist /margarita/
 
 RUN chgrp -R www-data /margarita \
-  && chmod -R g+wr /margarita
+  && chmod -R g+r /margarita
 
 CMD ["/usr/sbin/apache2ctl", "-DFOREGROUND"]
