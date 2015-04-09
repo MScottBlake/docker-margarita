@@ -3,6 +3,18 @@
 A Docker container for running [Margarita](https://github.com/jessepeterson/margarita), a web front-end for [Reposado](https://github.com/wdas/reposado).
 
 
+# Note
+
+If you make a change and the blue bar never stops scrolling, you likely have a permissions problems. This could occur if you perform a `repo_sync` and it creates new files. Those files will not have the proper permissions. To fix this, run the following commands.
+
+```bash
+docker exec margarita chgrp -R www-data /reposado
+```
+```bash
+docker exec margarita chmod -R g+wr /reposado
+```
+
+
 # Usage Examples
 
 ## Example #1 - Basic
