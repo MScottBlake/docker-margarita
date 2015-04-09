@@ -4,6 +4,8 @@ MAINTAINER Scott Blake "Scott.Blake@mail.wvu.edu"
 
 EXPOSE 8089
 
+CMD ["/usr/sbin/apache2ctl", "-DFOREGROUND"]
+
 RUN apt-get update -qq \
   && apt-get install -y -qq apache2 apache2-utils curl libapache2-mod-wsgi \
   && pip install -q flask \
@@ -31,5 +33,3 @@ COPY preferences.plist /margarita/
 
 RUN chgrp -R www-data /margarita \
   && chmod -R g+r /margarita
-
-CMD ["/usr/sbin/apache2ctl", "-DFOREGROUND"]
