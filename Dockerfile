@@ -4,9 +4,9 @@ MAINTAINER Scott Blake "Scott.Blake@mail.wvu.edu"
 
 EXPOSE 8089
 
-RUN apt-get update \
-  && apt-get install -y apache2 apache2-utils curl libapache2-mod-wsgi \
-  && pip install flask \
+RUN apt-get update -qq \
+  && apt-get install -y -qq apache2 apache2-utils curl libapache2-mod-wsgi \
+  && pip install -q flask \
   && mkdir -p /margarita /var/lock/apache2 /var/run/apache2 \
   && curl -ksSL https://github.com/jessepeterson/margarita/tarball/master \
     | tar zx \
@@ -16,12 +16,12 @@ RUN apt-get update \
   && cp -rf wdas-reposado-*/code/reposadolib /margarita \
   && rm -f master /etc/apache2/sites-enabled/000-default.conf \
   && rm -rf jessepeterson-margarita-* wdas-reposado-* \
-  && apt-get -y remove --purge curl \
-  && apt-get -y autoremove --purge \
-  && apt-get clean \
+  && apt-get -y -qq remove --purge curl \
+  && apt-get -y -qq autoremove --purge \
+  && apt-get -qq clean \
   && a2enmod auth_digest authn_anon authn_dbd authn_dbm authn_socache \
-  && a2enmod authnz_fcgi authnz_ldap authz_dbd authz_dbm authz_groupfile \
-  && a2enmod authz_owner ssl \
+             authnz_fcgi authnz_ldap authz_dbd authz_dbm authz_groupfile \
+             authz_owner ssl \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY extras.conf /
