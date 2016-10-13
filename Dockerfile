@@ -30,7 +30,10 @@ COPY margarita.wsgi /
 COPY preferences.plist /margarita/
 COPY start.sh /
 
-RUN chgrp -R www-data /margarita /reposado/html /reposado/metadata /start.sh \
+RUN chgrp -R www-data /margarita \
+  && chgrp -R www-data /reposado/html \
+  && chgrp -R www-data /reposado/metadata \
+  && chgrp -R www-data /start.sh \
   && chmod -R g+rs /margarita \
   && chmod g+x /start.sh
 
