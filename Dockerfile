@@ -7,7 +7,8 @@ EXPOSE 8089
 RUN apt-get update -qq \
   && apt-get install -y -qq apache2 apache2-utils curl libapache2-mod-wsgi \
   && pip install -q flask \
-  && mkdir -p /margarita /reposado /var/lock/apache2 /var/run/apache2 \
+  && mkdir -p /margarita /reposado/html /reposado/metadata \
+  && mkdir -p /var/lock/apache2 /var/run/apache2 \
   && curl -ksSL https://github.com/jessepeterson/margarita/tarball/master \
     | tar zx \
   && cp -rf jessepeterson-margarita-*/* /margarita \
