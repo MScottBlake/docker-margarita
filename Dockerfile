@@ -28,9 +28,9 @@ COPY extras.conf /
 COPY margarita.conf /etc/apache2/sites-enabled/
 COPY margarita.wsgi /
 COPY preferences.plist /margarita/
-COPY apache2ctl-foreground /usr/local/bin
+COPY apache2ctl-foreground /usr/local/bin/
 
 RUN chgrp -R www-data /margarita \
   && chmod -R g+rs /margarita
 
-CMD ["apache2ctl-foreground"]
+CMD ["/usr/local/bin/apache2ctl-foreground"]
