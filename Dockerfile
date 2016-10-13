@@ -35,6 +35,8 @@ RUN chgrp -R www-data /margarita \
   && chgrp -R www-data /start.sh \
   && chmod g+x /start.sh
 
-RUN chgrp -Rv www-data /reposado
+RUN mkdir /reposado \
+  && chgrp -Rv www-data /reposado \
+  && chmod g+s /reposado
 
 CMD ["/start.sh"]
