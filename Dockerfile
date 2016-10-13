@@ -32,4 +32,4 @@ COPY margarita.wsgi /
 COPY preferences.plist /margarita/
 
 RUN chgrp -R www-data /margarita \
-  && chmod -R g+r /margarita
+  && chmod -R g+rs /margarita
