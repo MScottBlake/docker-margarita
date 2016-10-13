@@ -31,10 +31,9 @@ COPY preferences.plist /margarita/
 COPY start.sh /
 
 RUN chgrp -R www-data /margarita
-RUN chgrp -R www-data /reposado/html
+RUN chmod -R g+rs /margarita
 RUN chgrp -R www-data /reposado/metadata
 RUN chgrp -R www-data /start.sh
-RUN chmod -R g+rs /margarita
 RUN chmod g+x /start.sh
 
 CMD ["/start.sh"]
