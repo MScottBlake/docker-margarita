@@ -4,7 +4,7 @@ MAINTAINER Scott Blake "Scott.Blake@mail.wvu.edu"
 
 EXPOSE 8089
 
-CMD ["/usr/sbin/apache2ctl", "-DFOREGROUND"]
+CMD ["/start.sh"]
 
 RUN apt-get update -qq \
   && apt-get install -y -qq apache2 apache2-utils curl libapache2-mod-wsgi \
@@ -30,6 +30,7 @@ COPY extras.conf /
 COPY margarita.conf /etc/apache2/sites-enabled/
 COPY margarita.wsgi /
 COPY preferences.plist /margarita/
+COPY start.sh /
 
 RUN chgrp -R www-data /margarita \
   && chmod -R g+rs /margarita
