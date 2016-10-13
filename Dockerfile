@@ -32,7 +32,7 @@ COPY start.sh /
 
 RUN chgrp -R www-data /margarita \
   && chmod -R g+rs /margarita \
-  && chgrp www-data start.sh \
+  && chgrp www-data /start.sh \
   && chmod g+x /start.sh
 
 CMD ["/start.sh"]
