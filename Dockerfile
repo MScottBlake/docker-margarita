@@ -7,7 +7,7 @@ EXPOSE 8089
 RUN apt-get update -qq \
   && apt-get install -y -qq apache2 apache2-utils curl libapache2-mod-wsgi \
   && pip install -q flask \
-  && mkdir -p /margarita /var/lock/apache2 /var/run/apache2 \
+  && mkdir -p /margarita /reposado /var/lock/apache2 /var/run/apache2 \
   && curl -ksSL https://github.com/jessepeterson/margarita/tarball/master \
     | tar zx \
   && cp -rf jessepeterson-margarita-*/* /margarita \
@@ -30,13 +30,8 @@ COPY margarita.wsgi /
 COPY preferences.plist /margarita/
 COPY start.sh /
 
-RUN chgrp -R www-data /margarita \
-  && chmod -R g+rs /margarita \
-  && chgrp -R www-data /start.sh \
+RUN chgrp -R www-data /margarita /reposado /start.sh \
+  && chmod -R g+rs /margarita /reposado \
   && chmod g+x /start.sh
-
-RUN mkdir /reposado \
-  && chgrp -Rv www-data /reposado \
-  && chmod g+s /reposado
 
 CMD ["/start.sh"]
