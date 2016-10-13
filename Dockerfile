@@ -32,7 +32,7 @@ COPY preferences.plist /margarita/
 COPY start.sh /
 
 RUN chgrp -R www-data /margarita /reposado /start.sh \
-  && chmod -R g+rs /margarita /reposado \
+  && chmod -R g+rws /margarita /reposado \
   && chmod g+x /start.sh
 
 CMD ["/start.sh"]
