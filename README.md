@@ -1,4 +1,6 @@
 # docker-margarita
+[![Build Status](https://img.shields.io/docker/automated/mscottblake/margarita.svg)](https://hub.docker.com/r/mscottblake/margarita/builds/) [![GitHub Stars](https://img.shields.io/github/stars/mscottblake/docker-margarita.svg)](https://github.com/mscottblake/docker-margarita/stargazers) [![Docker Stars](https://img.shields.io/docker/stars/mscottblake/margarita.svg)](https://hub.docker.com/r/mscottblake/margarita) [![Docker Pulls](https://img.shields.io/docker/pulls/mscottblake/margarita.svg)](https://hub.docker.com/r/mscottblake/margarita)
+
 
 A Docker container for running [Margarita](https://github.com/jessepeterson/margarita), a web front-end for [Reposado](https://github.com/wdas/reposado).
 
