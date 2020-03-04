@@ -41,7 +41,7 @@ docker run --name margarita -d -p 8089:8089 -v /path/to/reposado/preferences.pli
 
 ## Example #4 - Link to an existing reposado container
 
-This example assumes the existence of a container named `reposado` from [mscottblake/reposado](https://registry.hub.docker.com/u/mscottblake/reposado/).
+This example assumes the existence of a container named `reposado` from [mscottblake/reposado](https://hub.docker.com/r/mscottblake/reposado).
 
 ```bash
 docker run --name margarita --volumes-from reposado -d -p 8089:8089 -v /path/to/reposado/preferences.plist:/margarita/preferences.plist mscottblake/margarita
