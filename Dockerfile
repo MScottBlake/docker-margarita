@@ -13,7 +13,7 @@ RUN apt-get update -qq \
     | tar zx \
   && cp -rf jessepeterson-margarita-*/* /margarita \
   && rm -f master \
-  && curl -ksSL https://github.com/wdas/reposado/tarball/master | tar zx \
+  && curl -ksSL https://github.com/wdas/reposado/tarball/main | tar zx \
   && cp -rf wdas-reposado-*/code/reposadolib /margarita \
   && rm -f master /etc/apache2/sites-enabled/000-default.conf \
   && rm -rf jessepeterson-margarita-* wdas-reposado-* \
